@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Role extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+    protected $table = 'roles';
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-    public function products()
+    public function users()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(User::class);
     }
 }
