@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartDetailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserSideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/register', [AuthController::class, 'store']);
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/dashboard/category', CategoryController::class);
+    Route::resource('/dashboard/product', ProductController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/', [UserSideController::class, 'index']);
+    Route::resource('/cart', CartController::class);
+    Route::resource('/toCart', CartDetailController::class);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
