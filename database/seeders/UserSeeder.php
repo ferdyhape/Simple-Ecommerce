@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Ferdy Hahan Pradana',
-            'email' => 'ferdyhape@gmail.com',
+            'email' => 'ferdyhahan5@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1,
             'created_at' => Carbon::now(),
