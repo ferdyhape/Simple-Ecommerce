@@ -47,7 +47,7 @@ class CartDetailController extends Controller
         $newCart['cart_id'] = auth()->user()->carts->id;
         // dd($newCart);
 
-        $productAdd = Cart_Detail::where('product_id', $newCart['product_id'])->first();
+        $productAdd = Cart_Detail::where('product_id', $newCart['product_id'])->where('cart_id', $newCart['cart_id'])->first();
         // dd($productAdd);
 
         if (is_null($productAdd)) {
