@@ -13,7 +13,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|min:3|max:255',
+            'price' => 'required|integer',
+            'sum' => 'required|integer',
+            'description' => 'nullable|string',
+            'category_id' => 'integer|exists:categories,id',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'category_id.exists' => 'You must choose a valid category',
         ];
     }
 }
