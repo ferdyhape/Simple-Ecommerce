@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cart__details', function (Blueprint $table) {
             $table->id();
-
+            $table->integer('qty')->nullable();
             $table->timestamps();
         });
     }
