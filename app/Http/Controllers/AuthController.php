@@ -49,8 +49,9 @@ class AuthController extends Controller
         $newUser = $request->all();
         $newUser['role_id'] = 2;
         $newUser['password'] = Hash::make($newUser['password']);
-        User::create($newUser);
-        $newCart['user_id'] = $newUser['user_id'];
+        $newUser = User::create($newUser);
+        $newCart['user_id'] = $newUser->id;
+        // dd($newCart);
         Cart::create($newCart);
 
         // $request->session()->with('success', 'Registration is successful, please login');
