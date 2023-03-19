@@ -13,9 +13,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getCategory()
+    {
+        return response()->json([
+            'categories' => Category::all()
+        ]);
+    }
     public function index()
     {
-        //
+        return view('dashboard.category.index', [
+            'title' => 'category',
+        ]);
     }
 
     /**
@@ -36,7 +45,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $newCategory = $request->all();
+
+        // dd($newCategory);
+        Category::create($newCategory);
+
+        return redirect('dashboard/category')->with('toast_success', 'Data User successfully added');
     }
 
     /**
@@ -70,7 +84,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $updatedCategory = $request->all();
+        $category = Category::find($category->id);
+        // dd($category);
+        $category->update($updatedCategory);
+
+        return redirect('/dashboard/category')->with('toast_success', 'Data User successfully updated');
     }
 
     /**
@@ -79,8 +98,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $categoryDelete = Category::find($id);
+        // dd($user);
+        $categoryDelete->delete();
+        return redirect('/dashboard/category')->with('toast_success', 'Data User successfully deleted');
     }
 }

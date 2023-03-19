@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -13,9 +15,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getProduct()
+    {
+        $dataProduct =
+            DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->select('products.*', 'categories.name', 'products.name as product_name')
+            ->get();
+
+        return response()->json([
+            'products' => $dataProduct,
+        ]);
+    }
     public function index()
     {
-        //
+        return view('dashboard.product.index', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -36,7 +53,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // dd($request);
+        $newProduct = $request->all();
+
+        Product::create($newProduct);
+
+        return redirect('dashboard/product')->with('toast_success', 'Data successfully added');
     }
 
     /**
@@ -70,7 +92,14 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+
+        $updatedProduct = $request->all();
+        // dd($updatedProduct);
+        $product = Product::find($product->id);
+        // dd($product);
+        $product->update($updatedProduct);
+
+        return redirect('/dashboard/product')->with('toast_success', 'Data User successfully updated');
     }
 
     /**
@@ -81,6 +110,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $productDelete = Product::find($product->id);
+        $productDelete->delete();
+        return redirect('/dashboard/product')->with('toast_success', 'Data User successfully deleted');
     }
 }
