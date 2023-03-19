@@ -99,7 +99,7 @@ class ProductController extends Controller
         // dd($product);
         $product->update($updatedProduct);
 
-        return redirect('/dashboard/product')->with('toast_success', 'Data User successfully updated');
+        return redirect('/dashboard/product')->with('toast_success', 'Data successfully updated');
     }
 
     /**
@@ -112,6 +112,6 @@ class ProductController extends Controller
     {
         $productDelete = Product::find($product->id);
         $productDelete->delete();
-        return redirect('/dashboard/product')->with('toast_success', 'Data User successfully deleted');
+        return redirect('/dashboard/product')->with('toast_success', 'Data successfully deleted');
     }
 }

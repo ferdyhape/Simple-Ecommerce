@@ -60,7 +60,7 @@ class CartDetailController extends Controller
             $productAdd->save();
         }
 
-        return redirect('/cart');
+        return redirect('/cart')->with('toast_success', 'Product successfully add to cart!');
     }
 
     /**
@@ -107,6 +107,6 @@ class CartDetailController extends Controller
     {
         $cart_delete = Cart_Detail::find($id);
         $cart_delete->delete();
-        return redirect('/cart')->with('toast_success', 'Data User successfully deleted');
+        return redirect('/cart')->with('toast_success', 'Product successfully deleted from cart!');
     }
 }

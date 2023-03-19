@@ -34,6 +34,8 @@
     @yield('content')
     @include('layouts.user_side.footer')
     @include('layouts.user_side.scripts')
+    @include('sweetalert::alert')
+
 
 </body>
 

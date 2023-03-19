@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -50,7 +52,7 @@ class CategoryController extends Controller
         // dd($newCategory);
         Category::create($newCategory);
 
-        return redirect('dashboard/category')->with('toast_success', 'Data User successfully added');
+        return redirect('dashboard/category')->with('toast_success', 'Data successfully added');
     }
 
     /**
@@ -89,7 +91,7 @@ class CategoryController extends Controller
         // dd($category);
         $category->update($updatedCategory);
 
-        return redirect('/dashboard/category')->with('toast_success', 'Data User successfully updated');
+        return redirect('/dashboard/category')->withSuccess('Data successfully updated!');
     }
 
     /**
@@ -103,6 +105,6 @@ class CategoryController extends Controller
         $categoryDelete = Category::find($id);
         // dd($user);
         $categoryDelete->delete();
-        return redirect('/dashboard/category')->with('toast_success', 'Data User successfully deleted');
+        return redirect('/dashboard/category')->with('toast_success', 'Data successfully deleted');
     }
 }
