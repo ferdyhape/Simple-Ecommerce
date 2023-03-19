@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
@@ -49,6 +50,8 @@ class AuthController extends Controller
         $newUser['role_id'] = 2;
         $newUser['password'] = Hash::make($newUser['password']);
         User::create($newUser);
+        $newCart['user_id'] = $newUser['user_id'];
+        Cart::create($newCart);
 
         // $request->session()->with('success', 'Registration is successful, please login');
 
