@@ -41,6 +41,11 @@ This repository was created to fulfill the Laravel Cart CRUD assignment in the I
 <img src="https://user-images.githubusercontent.com/75787853/226199799-65a06230-5d92-469b-b42c-81e727ada224.png" width=70% height=70%><br>
 <img src="https://user-images.githubusercontent.com/75787853/226199847-3f0c10bf-2ea1-412e-8946-642e44f3738f.png" width=70% height=70%><br>
 
+* Preview(click the image below)<br>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Lypq2ikDt8c
+" target="_blank"><img src="http://img.youtube.com/vi/Lypq2ikDt8c/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="70%" height="70%" border="10" /></a>
 
 
 ### :link: About Creator
