@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart_Detail;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+use function PHPUnit\Framework\isNull;
 use App\Http\Requests\StoreCart_DetailRequest;
 use App\Http\Requests\UpdateCart_DetailRequest;
 
@@ -36,7 +40,27 @@ class CartDetailController extends Controller
      */
     public function store(StoreCart_DetailRequest $request)
     {
-        //
+        // dd($request);
+        $newCart = $request->all();
+        // dd($newCart);
+
+        $newCart['cart_id'] = auth()->user()->carts->id;
+        // dd($newCart);
+
+        $productAdd = Cart_Detail::where('product_id', $newCart['product_id'])->first();
+        // dd($productAdd);
+
+        if (is_null($productAdd)) {
+            // dd("masukk if");
+            Cart_Detail::create($newCart);
+        } else {
+            // dd("masukk else");
+            // dd($productAdd);
+            $productAdd['qty'] += $newCart['qty'];
+            $productAdd->save();
+        }
+
+        return redirect('/cart');
     }
 
     /**
@@ -79,8 +103,10 @@ class CartDetailController extends Controller
      * @param  \App\Models\Cart_Detail  $cart_Detail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart_Detail $cart_Detail)
+    public function destroy($id)
     {
-        //
+        $cart_delete = Cart_Detail::find($id);
+        $cart_delete->delete();
+        return redirect('/cart')->with('toast_success', 'Data User successfully deleted');
     }
 }

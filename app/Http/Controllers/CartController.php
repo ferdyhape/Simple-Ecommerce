@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 
@@ -15,7 +17,35 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $usercart = DB::table('cart__details')
+            ->join('carts', 'cart__details.cart_id', '=', 'carts.id')
+            ->join('products', 'cart__details.product_id', '=', 'products.id')
+            ->join('users', 'carts.user_id', '=', 'users.id')
+            ->where('users.id', '=', auth()->user()->id)
+            ->select(
+                'users.id',
+                'products.name',
+                'products.description',
+                'products.price',
+                'cart__details.qty as qty',
+                'cart__details.id',
+            )
+            ->orderBy('products.category_id', 'ASC')
+            ->get();
+
+        $totalPrice = 0;
+        if ($usercart->isEmpty()) {
+            $usercart = null;
+        } else {
+            foreach ($usercart as $cart) {
+                $totalPrice += $cart->price * $cart->qty;
+            }
+        }
+        // dd($totalPrice);
+        return view('user_side.cart', [
+            'usercart' => $usercart,
+            'totalPrice' => $totalPrice,
+        ]);
     }
 
     /**
