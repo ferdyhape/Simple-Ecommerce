@@ -81,7 +81,7 @@
                     let row = document.createElement('tr');
                     row.innerHTML =
                         `
-                    <td>${index}</td>
+                    <td>${index+1}</td>
                     <td>${element.name}</td>
                     <td>
                         <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
@@ -156,7 +156,7 @@
                     let row = document.createElement('tr');
                     row.innerHTML =
                         `
-                    <td>${index}</td>
+                    <td>${index+1}</td>
                     <td>${element.product_name}</td>
                     <td>${element.price}</td>
                     <td>${element.sum}</td>

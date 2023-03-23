@@ -44,8 +44,19 @@
                     </div>
                 @endforeach
             </div>
-            <div class="card border-0 mt-3">
-                <div class="card-body d-flex justify-content-between ">
+            <div class="card border-0 mt-3 py-3 px-2">
+                @foreach ($usercart as $product)
+                    @php
+                        $subtotal = $product->price * $product->qty;
+                    @endphp
+
+                    <div class="card-body d-flex justify-content-between my-0 py-0">
+                        <span class="p-0">{{ $product->name }} x {{ $product->qty }}</span>
+                        <span class="fw-semibold p-0">@toRP($subtotal)</span>
+                    </div>
+                @endforeach
+                <hr class="px-5">
+                <div class="card-body d-flex justify-content-between py-0">
                     <span class="fw-semibold p-0">Total:</span>
                     <span class="fw-bold p-0">@toRP($totalPrice)</span>
                 </div>
