@@ -32,14 +32,14 @@ class ProductSeeder extends Seeder
             'description' => $faker->sentence(5),
         ]);
         Product::create([
-            'name' => 'Nasi Imut',
+            'name' => 'Nasi Tidak Goreng',
             'price' => '11000',
             'sum' => '23',
             'category_id' => 1,
             'description' => $faker->sentence(5),
         ]);
         Product::create([
-            'name' => 'Nasi Gemoy',
+            'name' => 'Nasi Tidak Bakar',
             'price' => '11000',
             'sum' => '10',
             'category_id' => 1,
@@ -60,7 +60,14 @@ class ProductSeeder extends Seeder
             'description' => $faker->sentence(5),
         ]);
         Product::create([
-            'name' => 'Es Energen Asin',
+            'name' => 'Es Bukan Teh',
+            'price' => '5000',
+            'sum' => '10',
+            'category_id' => 2,
+            'description' => $faker->sentence(5),
+        ]);
+        Product::create([
+            'name' => 'Es Teh Tidak Manis',
             'price' => '5000',
             'sum' => '10',
             'category_id' => 2,
