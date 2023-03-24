@@ -17,6 +17,7 @@ class CartDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -94,7 +95,14 @@ class CartDetailController extends Controller
      */
     public function update(UpdateCart_DetailRequest $request, Cart_Detail $cart_Detail)
     {
-        //
+        $editedCart = $request->all();
+        // dd($cart_Detail);
+
+        $findCart = Cart_Detail::find($editedCart['id']);
+        // dd($findCart);
+        $findCart->update($editedCart);
+
+        return redirect('/cart')->with('toast_success', 'product successfully updated on cart');
     }
 
     /**

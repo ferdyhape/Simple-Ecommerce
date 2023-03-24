@@ -15,6 +15,8 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $usercart = DB::table('cart__details')
@@ -28,7 +30,7 @@ class CartController extends Controller
                 'products.description',
                 'products.price',
                 'cart__details.qty as qty',
-                'cart__details.id',
+                'cart__details.id as cart_details_id',
             )
             ->orderBy('products.category_id', 'ASC')
             ->get();

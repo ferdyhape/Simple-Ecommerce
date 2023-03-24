@@ -13,7 +13,7 @@ class UpdateCart_DetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateCart_DetailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'qty' => 'required|integer',
+            'id' => 'required|integer',
         ];
     }
 }

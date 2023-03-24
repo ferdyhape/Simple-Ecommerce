@@ -27,13 +27,25 @@
                                     <span>@toRP($product->price)</span>
                                 </div>
                                 <div class="d-flex justify-content-between font-weight-bold mt-3 text-primary">
-                                    <span class="text-muted border px-2 rounded">{{ $product->qty }}</span>
+                                    {{--  <span class="text-muted border px-2 rounded">{{ $product->qty }}</span>  --}}
+                                    <form action="toCart/{{ $product->id }}" class="d-flex justify-content-between"
+                                        method="POST">
+                                        @method('PUT')
+                                        @csrf
+                                        <div class="input-group input-group-sm " style="width:25%">
+                                            <input type="number" class="form-control rounded"
+                                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                                name="qty" value="{{ $product->qty }}">
+                                            <input type="hidden" name="id" value="{{ $product->cart_details_id }}">
+                                        </div>
+
+                                    </form>
                                     <button class="badge m-0 p-0 bg-transparent border-0 delete-confirm"
                                         data-id="{{ $product->id }}" data-name="{{ $product->name }}"><i
                                             class="fas fa-fw fa-trash text-danger fs-4"
                                             style="font-size: 18px;"></i></button>
-                                    <form action="/toCart/{{ $product->id }}" id="form-delete-{{ $product->id }}"
-                                        method="POST" style="display: none">
+                                    <form action="/toCart/{{ $product->cart_details_id }}"
+                                        id="form-delete-{{ $product->id }}" method="POST" style="display: none">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <input type="submit">
