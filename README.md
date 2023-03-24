@@ -5,6 +5,18 @@ Name: ``` Ferdy Hahan Pradana ```
 
 Campus: ``` Politeknik Negeri Malang ```
 
+
+## :key: Login
+Email: 
+```
+ferdy@hape.com
+```
+
+Password: 
+```
+password
+```
+
 ## :open_book: Description
 This repository was created to fulfill the Laravel Cart CRUD assignment in the Independent Fullstack Web Developer Study program by GITS.id partner, MSIB Batch 4.
 
@@ -21,7 +33,7 @@ This repository was created to fulfill the Laravel Cart CRUD assignment in the I
 ### :camera: Page Screenshot
 * Login<br>
 
-<img src="https://user-images.githubusercontent.com/75787853/226199356-7467bf0e-0652-4b46-8dcf-219a408d37e9.png" width=70% height=70%><br>
+<img src="https://user-images.githubusercontent.com/75787853/227540765-0df89171-66bc-4ffc-b3df-ad898f90bd8c.png" width=70% height=70%><br>
 
 * Register<br>
 
@@ -29,23 +41,18 @@ This repository was created to fulfill the Laravel Cart CRUD assignment in the I
 
 * Home Page<br>
 
-<img src="https://user-images.githubusercontent.com/75787853/226199663-ae7133be-aa5a-44af-ab4e-a6332a138af9.png" width=70% height=70%><br>
+<img src="https://user-images.githubusercontent.com/75787853/227549478-f12ff508-dbf5-46b3-9de9-7b66e5921ff1.png" width=70% height=70%><br>
 
 
 * Cart Page<br>
 
-<img src="https://user-images.githubusercontent.com/75787853/226199726-dfa25d75-f868-4a32-a19f-45ba7c12333a.png" width=70% height=70%><br>
+<img src="https://user-images.githubusercontent.com/75787853/227549856-cd7e545b-8633-48c3-90f9-06345a159283.png" width=70% height=70%><br>
+<img src="https://user-images.githubusercontent.com/75787853/227550437-80f80c29-0203-45e2-ab96-50c5686eed0f.png" width=70% height=70%><br>
 
 * Dashboard Page<br>
 
 <img src="https://user-images.githubusercontent.com/75787853/226199799-65a06230-5d92-469b-b42c-81e727ada224.png" width=70% height=70%><br>
 <img src="https://user-images.githubusercontent.com/75787853/226199847-3f0c10bf-2ea1-412e-8946-642e44f3738f.png" width=70% height=70%><br>
-
-* Preview(click the image below)<br>
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Lypq2ikDt8c
-" target="_blank"><img src="http://img.youtube.com/vi/Lypq2ikDt8c/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="70%" height="70%" border="10" /></a>
 
 
 ### :link: About Creator
